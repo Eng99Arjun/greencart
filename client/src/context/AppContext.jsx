@@ -15,8 +15,9 @@ export const AppContextProvider = ({ children }) => {
     const [isSeller, setIsSeller] = useState(false);
     const [showUserLogin, setShowUserLogin] = useState(false);
     const [products, setProducts] = useState([]);
+    
+    const [searchQuery , setSearchQuery] = useState({});
     const [cartItems, setCartItems] = useState({});
-
     // Function to add product to cart
     const addToCart = (itemId) => {
         let cartData = structuredClone(cartItems);
@@ -60,7 +61,7 @@ export const AppContextProvider = ({ children }) => {
         fetchProducts();
     }, []);
 
-    const value = {addToCart, removeFromCart, updateCartItem, currency, products, showUserLogin, setShowUserLogin, navigate, user, setUser, isSeller, setIsSeller, cartItems};
+    const value = {searchQuery, setSearchQuery, addToCart, removeFromCart, updateCartItem, currency, products, showUserLogin, setShowUserLogin, navigate, user, setUser, isSeller, setIsSeller, cartItems};
 
     return (
         <AppContext.Provider value={value}>
