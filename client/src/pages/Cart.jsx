@@ -4,12 +4,12 @@ import { assets, dummyAddress } from "../assets/assets";
 
 
 const Cart = () => {
-    const [showAddress, setShowAddress] = useState(false)
     const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, navigate} = useAppContext();
-
+    
     const [cartArray, setCartArray] = useState([]);
-    const [addresses, setAddresses] = useState([dummyAddress]);
-    const [ShowAddresses, setShowAddresses] = useState(false);
+    const [addresses, setAddresses] = useState(dummyAddress);
+    const [showAddress, setShowAddress] = useState(false)
+    
     const [selectedAddress, setSelectedAddress] = useState(dummyAddress[0]);
 
     const [paymentOptions, setPaymentOptions] = useState("COD");
@@ -103,11 +103,12 @@ const Cart = () => {
                         </button>
                         {showAddress && (
                             <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full">
-                                {addresses.map((address,index) => (
-                                    <p onClick={() => {
-                                        setSelectedAddress(address); 
+                                {addresses.map((address, index) => (
+                                    <p 
+                                        onClick= {() => {
+                                        setSelectedAddress(address);
                                         setShowAddress(false);
-                                    }} className="text-gray-500 p-2 hover:bg-gray-100">
+                                    }}  className="text-gray-500 p-2 hover:bg-gray-100">
                                         {address.street}, {address.city}, {address.state}, {address.country}
                                 </p>
                                 )) }
