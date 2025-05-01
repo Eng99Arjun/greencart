@@ -39,17 +39,16 @@ export const AppContextProvider = ({ children }) => {
         toast.success("Product quantity updated");
     }
 
-    // Function to remove product from cart
+    // Function to remove or reduce product from cart
     const removeFromCart = (itemId) => {
         let cartData = structuredClone(cartItems);
-        if(cartData[itemId]){
-            cartData[itemId] = -1;
-            if(cartData[itemId] === 0){
-                delete cartData[itemId];
-            }
+        if(cartData[itemId] > 1){
+            cartData[itemId] -= 1;
+        }else{
+            delete cartData[itemId];
         }
-        toast.success("Product removed from cart");
         setCartItems(cartData);
+        toast.success("Product removed from cart");
     }
 
     // Function to fetch product
