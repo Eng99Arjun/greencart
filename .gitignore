@@ -1,5 +1,6 @@
 # Node modules
 node_modules/
+server/node_modules/
 
 # Logs
 logs/
@@ -16,7 +17,9 @@ pids/
 
 # dotenv environment variables
 .env
-.env.*
+.env*
+server/.env
+
 
 # Build output
 dist/
