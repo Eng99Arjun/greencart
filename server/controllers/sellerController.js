@@ -10,7 +10,7 @@ export const sellerLogin = async(req, res) => {
         if(password === process.env.SELLER_PASSWORD && email === process.env.SELLER_EMAIL){
             const token = jwt.sign({email}, process.env.JWT_SECRET, {expiresIn: '7d'});
 
-            res.cookie('token', token, {
+            res.cookie('sellerToken', token, {
                 httpOnly: true, // Prevent JS to access cookie
                 secure: process.env.NODE_ENV === 'production', // use secure cookie in production
                 sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict', // CSRF protection

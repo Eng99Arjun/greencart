@@ -1,6 +1,6 @@
 import {v2 as cloudinary} from 'cloudinary'
 import product from '../models/Product.js'
-import { response } from 'express'
+
 import Product from '../models/Product.js'
 
 // Add Product : /api/product/add
@@ -19,7 +19,7 @@ export const addProduct = async (req, res) => {
         
         await product.create({...productData, image: imagesUrl})
 
-        response.json({success: true, message: "Product Added"})
+        res.json({success: true, message: "Product Added"})
 
     } catch (error) {
         console.log(error.message);

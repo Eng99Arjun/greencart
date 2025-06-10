@@ -1,7 +1,9 @@
 import React from "react";
 import { useAppContext } from "../context/AppContext";
+import toast from "react-hot-toast";
+import { data } from "react-router-dom";
 const Login = () => {
-    const {setShowUserLogin, setUser} = useAppContext();
+    const {setShowUserLogin, setUser, axios, navigate } = useAppContext();
 
     const [state, setState] = React.useState("login");
     const [name, setName] = React.useState("");
@@ -9,13 +11,23 @@ const Login = () => {
     const [password, setPassword] = React.useState("");
 
     const onSubmitHandler = async (event) => {
-        event.preventDefault();
-        setUser({
-            email: "abc@xyz.com", 
-            name: "Abc xyz", 
-            // password:"123456",
-        });
-        setShowUserLogin(false);
+        try {
+            event.preventDefault();
+
+            const { data } = await axios.post(`/api/user/${state}`, {
+                name, email, password
+            });
+            if(data.success){
+                navigate('/')
+                setUser(data.user)
+                setShowUserLogin(false);
+            } else{
+                toast.error(data.message);
+            }
+                 
+        } catch (error) {
+            toast.error(data.message)
+        }
     }
 
     return (
