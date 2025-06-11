@@ -10,19 +10,9 @@ const ProductCard = ({product}) => {
      if (!product) return null;
 
     return product && (
-        <div
-            onClick={() => {
-                navigate(`/products/${product.category?.toLowerCase()}/${product._id}`);
-                scrollTo(0, 0);
-            }}
-            className="border border-gray-500/20 rounded-md px-3 py-2 bg-white w-full flex flex-col items-center cursor-pointer"
-        >
-            <div className="group flex items-center justify-center w-full">
-                <img
-                    className="group-hover:scale-105 transition w-24 h-24 object-contain"
-                    src={product.image[0]}
-                    alt={product.name}
-                />
+        <div onClick={() =>{ navigate(`/products/${product.category?.toLowerCase()}/${product._id}`); scrollTo(0,0)} } className="border border-gray-500/20 rounded-md md:px-4 px-3 py-2 bg-white min-w-56 max-w-56 w-full">
+            <div className="group cursor-pointer flex items-center justify-center px-2">
+                <img className="group-hover:scale-105 transition max-w-26 md:max-w-36" src={product.image[0]} alt={product.name} />
             </div>
             <div className="text-gray-500/60 text-sm">
                 <p>{product.category}</p>
