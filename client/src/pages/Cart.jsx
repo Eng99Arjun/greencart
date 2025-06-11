@@ -33,8 +33,9 @@ const Cart = () => {
                 setAddresses(data.addresses);
                 if(data.addresses.length > 0){
                     setSelectedAddress(data.addresses[0]);
-                }else {
-                    toast.error(data.message);
+                } else {
+                    // Show a clear message or skip the toast
+                    toast.error("No saved addresses found. Please add one.");
                 }
             }
         } catch (error) {
