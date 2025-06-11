@@ -4,16 +4,10 @@ const Contact = () => {
   return (
     <div>
         <form className="flex flex-col items-center text-sm text-slate-800">
-        <p className="text-xs bg-indigo-200 text-primary font-medium px-3 py-1 rounded-full">
+        <p className="bg-indigo-200 text-primary pb-4 text-lg font-medium">
             Contact Us
         </p>
         <h1 className="text-4xl font-bold py-4 text-center">Let’s Get In Touch.</h1>
-        <p className="max-md:text-sm text-gray-500 pb-10 text-center">
-            Or just reach out manually to us at{" "}
-            <a href="#" className="text-primary hover:underline">
-            hello@prebuiltui.com
-            </a>
-        </p>
         <div className="max-w-96 w-full px-4">
             <label htmlFor="name" className="font-medium">
             Full Name
