@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import axios from 'axios';
@@ -16,6 +16,7 @@ export const AppContextProvider = ({ children }) => {
     const currency = import.meta.env.VITE_CURRENCY;
 
     const navigate = useNavigate();
+    const location = useLocation();
     const [user, setUser] = useState(null);
     const [isSeller, setIsSeller] = useState(false);
     const [showUserLogin, setShowUserLogin] = useState(false);
@@ -127,8 +128,11 @@ export const AppContextProvider = ({ children }) => {
     useEffect(() => {
         fetchProducts();
         fetchSeller();
-        fetchUser();
-    }, []);
+        // Only fetch user if not on a seller route
+        if (!location.pathname.startsWith("/seller")) {
+            fetchUser();
+        }
+    }, [location.pathname]);
 
     // Update cart items in the backend when user is logged in
 
