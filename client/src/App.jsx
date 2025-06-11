@@ -18,6 +18,7 @@ import AddProduct from './pages/seller/AddProduct'
 import ProductList from './pages/seller/ProductList'
 import Orders from './pages/seller/Orders'
 import Loading from './components/Loading.jsx'
+import Contact from './pages/Contact.jsx'
 
 const App = () => {
 
@@ -38,6 +39,7 @@ const App = () => {
       
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact/>} />
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:category" element={<ProductCategory />} />
           <Route path="/products/:category/:id" element={<ProductDetails />} />
